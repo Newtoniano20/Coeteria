@@ -79,7 +79,7 @@ def Programa(Button_Clicked):
     t_burn = float(Variables[8].get())    # Temps de cremat [s]
     m = (m_i + m_f)/2                     # Massa mitjana del coet
     k = 0.5*c_D*A*rho_0                   # Factor constant en l'equació del Drag
-    cleaning = Clean.get()                      #Si la casella de neteja del grafic esta marcada o no (si = 1/ No =0)
+    cleaning = Clean.get()                #Si la casella de neteja del grafic esta marcada o no (si = 1/ No =0)
     
     def Thrust(t):
         if t < t_burn:
