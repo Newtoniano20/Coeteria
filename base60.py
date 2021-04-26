@@ -1,11 +1,7 @@
 from tkinter import *
-import webbrowser
-import time, datetime
-import re
 import base64
- 
- 
- 
+
+#Encoder to base 64
 open_icon = open("12.png","rb") #qq.icon is the icon you want to put in
 b64str = base64.b64encode(open_icon.read()) #Read in base64 format
 open_icon.close()
