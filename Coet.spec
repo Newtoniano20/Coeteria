@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['Coet.py'],
-             pathex=['C:\\Users\\Joelg\\Downloads\\New'],
+             pathex=['C:\\Users\\Joelg\\OneDrive\\Documentos\\GitHub\\Coeteria'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -31,4 +31,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='C:\\Users\\Joelg\\Downloads\\New\\Icon.ico')
+          console=False , icon='C:\\Users\\Joelg\\OneDrive\\Documentos\\GitHub\\Coeteria\\Icon.ico')

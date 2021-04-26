@@ -36,7 +36,9 @@ os.remove("tmp.png")
 #background_image= ImageTk.PhotoImage(Image.open("12.png"))
 #background_label = Label(root, image=background_image)
 #background_label.place(x=-20, y=-20)
-def setIcon():
+
+
+def setIcon(): #Aquesta funció s'ha de cambiar
         tmp = open("tmp.ico","wb+")  
         tmp.write(base64.b64decode(img))
         tmp.close()
@@ -60,90 +62,33 @@ myLabel2.grid(row=1, column=2)
 
 space = Label(root, text="", bg=background_color).grid(row=2, column=1)
 
-gravity = Label(root, text = "Acceleració de la gravetat [m/s^2]: ", bg=background_color)
-gravity.grid(row=3, column=1)
-gv = Entry(root, width=50, borderwidth=1) #input
-gv.insert(0, g)
-gv.grid(row=3, column=2)
+Parametres = ["Acceleració de la gravetat [m/s^2]: ", "Densitat al nivell del mar [kg/m^3]: ","Escala de l'alçada [m]: ","Coeficient del drag del coet [-]: ","Àrea frontal del coet [m^2]:",'Massa "molla" del coet (inclou propel·lent) [kg]:','Massa "seca" del coet (no inclou propel·lent) [kg]:', 'Thrust mitjà del coet [N]:','Temps de cremat [s]:']
+Variables_Perametres = [g, rho_0, H, c_D, A, m_i, m_f, T_avg,t_burn]
+Variables = [g, rho_0, H, c_D, A, m_i, m_f, T_avg,t_burn]
+varnum = 0
+varnum2 = 0
 
-space = Label(root, text="", bg=background_color).grid(row=4, column=1)
-
-Dens = Label(root, text = "Densitat al nivell del mar [kg/m^3]: ", bg=background_color)
-Dens.grid(row=5, column=1)
-ds = Entry(root, width=50, borderwidth=1) #input
-ds.insert(0, rho_0)
-ds.grid(row=5, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=6, column=1)
-
-Escala = Label(root, text = "Escala de l'alçada [m]: ", bg=background_color)
-Escala.grid(row=7, column=1)
-es = Entry(root, width=50, borderwidth=1) #input
-es.insert(0, H)
-es.grid(row=7, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=8, column=1)
-
-Escala = Label(root, text = "Coeficient del drag del coet [-]: ", bg=background_color)
-Escala.grid(row=9, column=1)
-cdr = Entry(root, width=50, borderwidth=1) #input
-cdr.insert(0, c_D)
-cdr.grid(row=9, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=10, column=1)
-
-Area = Label(root, text = "Àrea frontal del coet [m^2]:", bg=background_color)
-Area.grid(row=11, column=1)
-Ae = Entry(root, width=50, borderwidth=1) #input
-Ae.insert(0, A)
-Ae.grid(row=11, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=12, column=1)
-
-Molla = Label(root, text = 'Massa "molla" del coet (inclou propel·lent) [kg]:', bg=background_color)
-Molla.grid(row=13, column=1)
-Mll = Entry(root, width=50, borderwidth=1) #input
-Mll.insert(0, m_i)
-Mll.grid(row=13, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=14, column=1)
-
-Seca = Label(root, text = 'Massa "seca" del coet (no inclou propel·lent) [kg]:', bg=background_color)
-Seca.grid(row=15, column=1)
-Sc = Entry(root, width=50, borderwidth=1) #input
-Sc.insert(0, m_f)
-Sc.grid(row=15, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=16, column=1)
-
-Seca = Label(root, text = 'Thrust mitjà del coet [N]:', bg=background_color)
-Seca.grid(row=17, column=1)
-Tm = Entry(root, width=50, borderwidth=1) #input
-Tm.insert(0, T_avg)
-Tm.grid(row=17, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=18, column=1)
-
-Seca = Label(root, text = 'Temps de cremat [s]:', bg=background_color)
-Seca.grid(row=19, column=1)
-Th = Entry(root, width=50, borderwidth=1) #input
-Th.insert(0, t_burn)
-Th.grid(row=19, column=2)
-
-space = Label(root, text="", bg=background_color).grid(row=20, column=1)
-
+for Par in Parametres:
+    Label1 = Label(root, text = Par, bg=background_color)
+    Label1.grid(row=3 + varnum2, column=1)
+    Variables[varnum] = Entry(root, width=50, borderwidth=1) #input
+    Variables[varnum].insert(0, Variables_Perametres[varnum])
+    Variables[varnum].grid(row=3 + varnum2, column=2)
+    space = Label(root, text="", bg=background_color).grid(row=4 + varnum2, column=1)
+    varnum += 1
+    varnum2 += 2
 c.grid(row=21, column=2)
 
 def Programa(w): 
-    g = float(gv.get())         # acceleració de la gravetat [m/s^2]
-    rho_0 = float(ds.get())     # Densitat al nivell del mar [kg/m^3]
-    H = float(es.get())         # Escala de l'alçada [m]
-    c_D =  float(cdr.get())     # Coeficient del drag del coet [-]
-    A = float(Ae.get())         # Àrea frontal del coet [m^2]
-    m_i = float(Mll.get())      # Massa "molla" del coet (inclou propel·lent) [kg]
-    m_f = float(Sc.get())       # Massa "seca" del coet (no inclou propel·lent) [kg]
-    T_avg = float(Tm.get())     # Thrust mitjà del coet [N]
-    t_burn = float(Th.get())    # Temps de cremat [s]
+    g = float(Variables[0].get())         # acceleració de la gravetat [m/s^2]
+    rho_0 = float(Variables[1].get())     # Densitat al nivell del mar [kg/m^3]
+    H = float(Variables[2].get())         # Escala de l'alçada [m]
+    c_D =  float(Variables[3].get())     # Coeficient del drag del coet [-]
+    A = float(Variables[4].get())         # Àrea frontal del coet [m^2]
+    m_i = float(Variables[5].get())      # Massa "molla" del coet (inclou propel·lent) [kg]
+    m_f = float(Variables[6].get())       # Massa "seca" del coet (no inclou propel·lent) [kg]
+    T_avg = float(Variables[7].get())     # Thrust mitjà del coet [N]
+    t_burn = float(Variables[8].get())    # Temps de cremat [s]
     m = (m_i + m_f)/2           # Massa mitjana del coet
     k = 0.5*c_D*A*rho_0         # Factor constant en l'equació del Drag
     cl = Clean.get()
@@ -166,7 +111,7 @@ def Programa(w):
         return temp_vector
 
     def trajectory(dt, t_f):
-        t_span = [0, t_f] # interval d'integració
+        t_span = [0, t_f] # interval Variables'integració
         w_0 = [0, 0] # valors inicials
         t_val = np.arange(0, t_f, dt) # valors de temps
         
@@ -206,7 +151,7 @@ def Programa(w):
         maxi = Label(info, text = f"Màxima velocitat: \n {max_vel} m/s", bg=background_color)
         maxi.grid(row=3, column=3)
         space = Label(root, text="", bg=background_color).grid(row=4, column=0)
-        fall = Label(info, text = f"Velocitat d'aterratge: \n {fallv} m/s", bg=background_color)
+        fall = Label(info, text = f"Velocitat Variables'aterratge: \n {fallv} m/s", bg=background_color)
         fall.grid(row=5, column=3)
         space = Label(root, text="", bg=background_color).grid(row=6, column=0)
         temps = Label(info, text = f"Temps total del vol: \n {tempsc} s", bg=background_color)
