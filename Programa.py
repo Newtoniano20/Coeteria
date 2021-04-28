@@ -88,25 +88,25 @@ t_f=120
 s = 0
 # Gràfic de la trajectòria
 t, y, v_y = trajectory(dt,t_f)
-for n in y:
+"""for n in y:
     s += 1
     if n < 0 and s != 1:
         print(v_y[s])
         break
-
-#plt.plot(t,y,'r')
-#plt.title("Trajectory")
-#plt.xlabel("$t$ [s]")
-#plt.ylabel("altitude [m]")
-#plt.axis([0, 100, 0, 11000])
-#plt.grid(True)
-#plt.show()
+"""
+plt.plot(t,y,'r')
+plt.title("Trajectory")
+plt.xlabel("$t$ [s]")
+plt.ylabel("altitude [m]")
+plt.axis([0, 100, 0, 11000])
+plt.grid(True)
+plt.show()
 
 #Gràfic de la velocitat
-#plt.plot(t,v_y,'r')
-#plt.title("Velocity")
-#plt.xlabel("$t$ [s]")
-#plt.ylabel("velocity [m/s]")
-#plt.axis([0, 100, -300, 750])
-#plt.grid(True)
-#plt.show()
+plt.plot(t,v_y,'r')
+plt.title("Velocity")
+plt.xlabel("$t$ [s]")
+plt.ylabel("velocity [m/s]")
+plt.axis([0, 100, -300, 750])
+plt.grid(True)
+plt.show()
