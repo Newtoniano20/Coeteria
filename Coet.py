@@ -64,7 +64,7 @@ for Par in Parametres:
     varnum += 1
 
 Clean = IntVar() #Variable integer de la casella Natejar el grafic
-natejar_grafic = Checkbutton(root, text= "Natejar el Grafic", variable=Clean, bg=background_color)
+natejar_grafic = Checkbutton(root, text= "Netejar el Gràfic", variable=Clean, bg=background_color)
 natejar_grafic.grid(row=21, column=2)
 
 def Programa(Button_Clicked): 
@@ -173,11 +173,11 @@ def Vel():
 
 space = Label(root, text="", bg=background_color).grid(row=80, column=1)
 #Botó trajectoria
-Trajectoria = Button(root, text="Grafic Trajectoria", padx=30, pady=10, command=Traj, fg="white", bg="green")
+Trajectoria = Button(root, text="Gràfic Trajectòria", padx=30, pady=10, command=Traj, fg="white", bg="green")
 
 Trajectoria.grid(row=85, column=1)
 #Botó velocitat
-Velocitat = Button(root, text="Grafic Velocitat", padx=35, pady=10, command=Vel, fg="white", bg="green")
+Velocitat = Button(root, text="Gràfic Velocitat", padx=35, pady=10, command=Vel, fg="white", bg="green")
 
 Velocitat.grid(row=85, column=2)
 #Botó Informació
