@@ -91,6 +91,8 @@ def Programa(Button_Clicked):
             return 0
         return -k*np.exp(-h/H)*v*abs(v)
 
+    def Paracaigudes(v, t):
+        pass
     def f(t, w):
         temp_vector = np.zeros(2)
         # Eq. (3) (1D)

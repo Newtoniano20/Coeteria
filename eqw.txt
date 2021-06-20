@@ -1,1 +1,1 @@
- pyinstaller.exe --onefile --windowed --icon=C:\Users\Joelg\Downloads\New\Icon.ico Coet.py
+ pyinstaller.exe --onefile --windowed --icon=C:\Users\Joelg\OneDrive\Documentos\GitHub\Coeteria\Icon.ico Coet.py
