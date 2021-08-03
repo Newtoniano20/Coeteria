@@ -1,13 +1,13 @@
 from tkinter import *
 from PIL import ImageTk, Image
-import numpy as np
+from numpy import zeros, exp, arange
 from scipy.integrate import solve_ivp
-import matplotlib.pyplot as plt
+from matplotlib.pyplot import plot, xlabel, ylabel, axis, grid, show, cla, figure
+from matplotlib.pyplot import title as pltitle
 import Logo                 #Logo in base 64
 import background_image_64  #background image in base 64
 import base64, os
-import tkinter.font as tkFont
-
+from tkinter.font import Font
 # Constants
 g = 9.81           # acceleració de la gravetat [m/s^2]
 rho_0 = 1.225      # Densitat al nivell del mar [kg/m^3]
@@ -42,7 +42,7 @@ def setIcon(tk): #Aquesta funció s'ha de cambiar
 setIcon(root)
 
 
-title = tkFont.Font(family="Helvetica",size=24,weight="bold")
+title = Font(family="Helvetica",size=24,weight="bold")
 Titol = Label(root, text="Taller de Coeteria", bg=background_color, font=title)
 Subtitol = Label(root, text="Proxima Space Program\n", bg=background_color, font=title)
 Titol.grid(row=0, column=2)
@@ -89,12 +89,12 @@ def Programa(Button_Clicked):
     def Drag(h, v):
         if v == 0: # Amb això ens estalviem dividir per 0.
             return 0
-        return -k*np.exp(-h/H)*v*abs(v)
+        return -k*exp(-h/H)*v*abs(v)
 
     def Paracaigudes(v, t):
         pass
     def f(t, w):
-        temp_vector = np.zeros(2)
+        temp_vector = zeros(2)
         # Eq. (3) (1D)
         temp_vector[0] = w[1]
         # Eq. (4). In the 1D-case, r_y = r = h
@@ -104,7 +104,7 @@ def Programa(Button_Clicked):
     def trajectory(dt, t_f):
         t_span = [0, t_f] # interval Variables'integració
         w_0 = [0, 0] # valors inicials
-        t_val = np.arange(0, t_f, dt) # valors de temps
+        t_val = arange(0, t_f, dt) # valors de temps
         
         solution = solve_ivp(f, t_span, w_0, t_eval=t_val)
         
@@ -143,28 +143,28 @@ def Programa(Button_Clicked):
             iteration2 += 1
         
     elif Button_Clicked == 1: #Grafic Posició-Temps
-        plt.figure(1)
+        figure(1)
         if cleaning == 1:
-            plt.cla()
-        plt.plot(t,y,'r')
-        plt.title("Trajectory")
-        plt.xlabel("$t$ [s]")
-        plt.ylabel("altitude [m]")
-        plt.axis([0, 100, 0, 11000])
-        plt.grid(True)
-        plt.show()
+            cla()
+        plot(t,y,'r')
+        pltitle("Trajectory")
+        xlabel("$t$ [s]")
+        ylabel("altitude [m]")
+        axis([0, 100, 0, 11000])
+        grid(True)
+        show()
         
     elif Button_Clicked == 2: #Grafic Velocitat-Temps
-        plt.figure(2)
+        figure(2)
         if cleaning == 1:
-            plt.cla()
-        plt.plot(t,v_y,'r')
-        plt.title("Velocity")
-        plt.xlabel("$t$ [s]")
-        plt.ylabel("velocity [m/s]")
-        plt.axis([0, 100, -300, 750])
-        plt.grid(True)
-        plt.show()
+            cla()
+        plot(t,v_y,'r')
+        pltitle("Velocity")
+        xlabel("$t$ [s]")
+        ylabel("velocity [m/s]")
+        axis([0, 100, -300, 750])
+        grid(True)
+        show()
 
 def info():
     Programa(0)
