@@ -1,5 +1,5 @@
 # Python GUI for Rocket Simulations
- made a GUI for rocket simulations for a school project. 
+ I made a GUI for rocket simulations for a school project. 
  It's only a basic GUI which given some inputs, predicts what a rocket might do in those circumstances. 
  It's coded in python as it is my main Programming Language and uses tkinter for the GUI.
 
