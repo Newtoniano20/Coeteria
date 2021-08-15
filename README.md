@@ -8,3 +8,7 @@
 This is one of my weekend projects so there's not a lot of effort putted into it, but i think it ended up great!
 
 In the dist folder, there's the exe if you want to try it
+
+> **Versions:**
+> 
+> **Python 3.9.5**
