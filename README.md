@@ -1,5 +1,3 @@
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
-
 # Python GUI for Rocket Simulations
  I made a GUI for rocket simulations for a school project. 
  It's only a basic GUI which given some inputs, predicts what a rocket might do in those circumstances. 
