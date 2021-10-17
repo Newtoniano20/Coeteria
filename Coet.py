@@ -8,6 +8,7 @@ import Logo                 #Logo in base 64
 import background_image_64  #background image in base 64
 import base64, os
 from tkinter.font import Font
+
 # Constants
 g = 9.81           # acceleració de la gravetat [m/s^2]
 rho_0 = 1.225      # Densitat al nivell del mar [kg/m^3]
@@ -93,6 +94,7 @@ def Programa(Button_Clicked):
 
     def Paracaigudes(v, t):
         pass
+
     def f(t, w):
         temp_vector = zeros(2)
         # Eq. (3) (1D)
@@ -115,6 +117,7 @@ def Programa(Button_Clicked):
     t_f=1200
 
     t, y, v_y = trajectory(dt,t_f)
+    print("y: ", y)
     max_vel = max(v_y) #Maxima velocitat
     ap = max(y) #Maxima altura
     
