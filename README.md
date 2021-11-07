@@ -11,4 +11,4 @@ In the dist folder, there's the exe if you want to try it
 > 
 > **Python 3.9.5**
 
-The calculations code was made by Jordi Vasquez and it's original code is on the source code. (Programa.py)
+The calculations code was made by Jordi Vasquez and its original code is on the source code. (Programa.py)
