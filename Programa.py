@@ -88,12 +88,7 @@ t_f=120
 s = 0
 # Gràfic de la trajectòria
 t, y, v_y = trajectory(dt,t_f)
-"""for n in y:
-    s += 1
-    if n < 0 and s != 1:
-        print(v_y[s])
-        break
-"""
+
 plt.plot(t,y,'r')
 plt.title("Trajectory")
 plt.xlabel("$t$ [s]")
