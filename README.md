@@ -12,3 +12,16 @@ In the dist folder, there's the exe if you want to try it
 > **Python 3.9.5**
 
 The calculations code was made by Jordi Vasquez and its original code is on the source code. (Programa.py)
+
+### Build:
+Exectute the Build.ps1 file, which will automatically install all needed dependencies
+```
+.\build.ps1
+```
+#### Or:
+Execute pyinstaller including the icon image:
+```
+python -m PyInstaller --onefile --windowed --icon={PATH}\Assets\Icon.ico Coet.py
+```
+
+***You must Include Defaults.JSON in the same directory as your .exe file***
