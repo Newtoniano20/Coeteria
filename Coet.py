@@ -45,6 +45,7 @@ Parametres = ["Acceleració de la gravetat [m/s^2]: ", "Densitat al nivell del m
               'Massa "molla" del coet (inclou propel·lent) [kg]:',
               'Massa "seca" del coet (no inclou propel·lent) [kg]:', 'Thrust mitjà del coet [N]:',
               'Temps de cremat [s]:']
+# todo : reformat this
 Variables_Perametres = [forces.g, forces.rho_0, forces.H, forces.c_D, forces.A, forces.m_i, forces.m_f, forces.T_avg, forces.t_burn]
 Variables = [forces.g, forces.rho_0, forces.H, forces.c_D, forces.A, forces.m_i, forces.m_f, forces.T_avg, forces.t_burn]
 varnum = 0

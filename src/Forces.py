@@ -2,6 +2,7 @@
 Forces Class
 All Forces that may be applied into rocketry will be defined and merged together
 """
+import tkinter
 
 from numpy import zeros, exp, arange
 from scipy.integrate import solve_ivp
@@ -24,12 +25,17 @@ class Forces:
         self.dt = defaults['dt']
         self.t_f = defaults['t_f']
 
-    def thrust(self, t):
+    def thrust(self, t: float):
         if t < self.t_burn:
             return self.T_avg
         return 0
 
-    def update_variables(self, var):
+    def update_variables(self, var: list):
+        """
+        Updates all variables following
+        @param var: list of entries
+        @type var: list
+        """
         self.g = float(var[0].get())  # acceleració de la gravetat [m/s^2]
         self.rho_0 = float(var[1].get())  # Densitat al nivell del mar [kg/m^3]
         self.H = float(var[2].get())  # Escala de l'alçada [m]
@@ -42,15 +48,15 @@ class Forces:
         self.m = (self.m_i + self.m_f) / 2
         self.k = 0.5 * self.c_D * self.A * self.rho_0
 
-    def drag(self, h, v):
+    def drag(self, h: float, v: float):
         if v == 0:  # Amb això ens estalviem dividir per 0.
             return 0
         return -self.k * exp(-h / self.H) * v * abs(v)
 
-    def paracaigudes(self, v, t):
+    def paracaigudes(self, v, t):  # todo
         pass
 
-    def f(self, t, w):
+    def f(self, t: float, w: float):
         temp_vector = zeros(2)
         # Eq. (3) (1D)
         temp_vector[0] = w[1]
@@ -59,6 +65,11 @@ class Forces:
         return temp_vector
 
     def trajectory(self):
+        """
+        Computes the trajectory using all available data
+        @return: time, postion, velocity
+        @rtype: List: float
+        """
         t_span = [0, self.t_f]  # interval Variables'integració
         w_0 = [0, 0]  # valors inicials
         t_val = arange(0, self.t_f, self.dt)  # valors de temps
