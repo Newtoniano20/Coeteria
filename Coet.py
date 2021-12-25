@@ -9,10 +9,9 @@ from json import load
 
 # Constants:
 with open('Defaults.JSON') as f:
-    Defaults = load(f)
+    forces = Forces(load(f))
 
-forces = Forces(Defaults)
-background_color = "#d4fffa"
+BACKGROUND_COLOR = "#d4fffa"
 
 root = Tk()
 root.geometry("1000x700")
@@ -36,9 +35,9 @@ def set_icon(tk):  # todo : Aquesta funció s'ha de cambiar
 
 set_icon(root)
 title_font = Font(family="Helvetica", size=24, weight="bold")
-Label(root, text="Taller de Coeteria", bg=background_color, font=title_font).grid(row=0, column=2)
-Label(root, text="Proxima Space Program\n", bg=background_color, font=title_font).grid(row=1, column=2)
-Label(root, text="", bg=background_color).grid(row=2, column=1)
+Label(root, text="Taller de Coeteria", bg=BACKGROUND_COLOR, font=title_font).grid(row=0, column=2)
+Label(root, text="Proxima Space Program\n", bg=BACKGROUND_COLOR, font=title_font).grid(row=1, column=2)
+Label(root, text="", bg=BACKGROUND_COLOR).grid(row=2, column=1)
 
 Parametres = ["Acceleració de la gravetat [m/s^2]: ", "Densitat al nivell del mar [kg/m^3]: ",
               "Escala de l'alçada [m]: ", "Coeficient del drag del coet [-]: ", "Àrea frontal del coet [m^2]:",
@@ -48,18 +47,16 @@ Parametres = ["Acceleració de la gravetat [m/s^2]: ", "Densitat al nivell del m
 # todo : reformat this
 Variables_Perametres = [forces.g, forces.rho_0, forces.H, forces.c_D, forces.A, forces.m_i, forces.m_f, forces.T_avg, forces.t_burn]
 Variables = [forces.g, forces.rho_0, forces.H, forces.c_D, forces.A, forces.m_i, forces.m_f, forces.T_avg, forces.t_burn]
-varnum = 0
 
-for Par in Parametres:
-    Label(root, text=Par, bg=background_color).grid(row=3 + varnum * 2, column=1)
-    Variables[varnum] = Entry(root, width=50, borderwidth=1)  # input
-    Variables[varnum].insert(0, Variables_Perametres[varnum])
-    Variables[varnum].grid(row=3 + varnum * 2, column=2)
-    Label(root, text="", bg=background_color).grid(row=4 + varnum * 2, column=1)
-    varnum += 1
+for i in range(len(Parametres)):
+    Label(root, text=Parametres[i], bg=BACKGROUND_COLOR).grid(row=3 + i * 2, column=1)
+    Variables[i] = Entry(root, width=50, borderwidth=1)  # input
+    Variables[i].insert(0, Variables_Perametres[i])
+    Variables[i].grid(row=3 + i * 2, column=2)
+    Label(root, text="", bg=BACKGROUND_COLOR).grid(row=4 + i * 2, column=1)
 
 Clean = IntVar()  # Variable integer de la casella Natejar el grafic
-Checkbutton(root, text="Netejar el Gràfic", variable=Clean, bg=background_color).grid(row=21, column=2)
+Checkbutton(root, text="Netejar el Gràfic", variable=Clean, bg=BACKGROUND_COLOR).grid(row=21, column=2)
 
 
 def programa(button_clicked):
@@ -81,18 +78,16 @@ def programa(button_clicked):
         set_icon(info_w)
         info_w.geometry("300x250")
         info_w.title("Informació del vol:")
-        info_w.configure(bg=background_color)
+        info_w.configure(bg=BACKGROUND_COLOR)
 
         # Printing out all the info:
         list_titles = [f"Apogeu: \n {ap} m", f"Màxima velocitat: \n {max_vel} m/s",
                        f"Velocitat d'aterratge: \n {fallv} m/s", f"Temps total del vol: \n {tempsc} s"]
-        iteration2 = 0
 
-        for titles in list_titles:
-            text_printed = Label(info_w, text=titles, bg=background_color)
-            text_printed.grid(row=1 + iteration2 * 2, column=3)
-            Label(info_w, text="", bg=background_color).grid(row=2 + iteration2 * 2, column=0)
-            iteration2 += 1
+        for i2 in range(len(list_titles)):
+            text_printed = Label(info_w, text=list_titles[i2], bg=BACKGROUND_COLOR)
+            text_printed.grid(row=1 + i2 * 2, column=3)
+            Label(info_w, text="", bg=BACKGROUND_COLOR).grid(row=(2 + i2 * 2), column=0)
 
     elif button_clicked == 1:  # Grafic Posició-Temps
         plt.figure(1)
@@ -119,7 +114,7 @@ def programa(button_clicked):
         plt.show()
 
 
-Label(root, text="", bg=background_color).grid(row=80, column=1)
+Label(root, text="", bg=BACKGROUND_COLOR).grid(row=80, column=1)
 # Botó trajectoria
 Button(root, text="Gràfic Trajectòria", padx=30, pady=10, command=lambda: programa(1), fg="white", bg="green").grid(row=85, column=1)
 
