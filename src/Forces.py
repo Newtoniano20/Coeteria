@@ -1,3 +1,8 @@
+"""
+Forces Class
+All Forces that may be applied into rocketry will be defined and merged together
+"""
+
 from numpy import zeros, exp, arange
 from scipy.integrate import solve_ivp
 
@@ -23,6 +28,19 @@ class Forces:
         if t < self.t_burn:
             return self.T_avg
         return 0
+
+    def update_variables(self, var):
+        self.g = float(var[0].get())  # acceleració de la gravetat [m/s^2]
+        self.rho_0 = float(var[1].get())  # Densitat al nivell del mar [kg/m^3]
+        self.H = float(var[2].get())  # Escala de l'alçada [m]
+        self.c_D = float(var[3].get())  # Coeficient del drag del coet [-]
+        self.A = float(var[4].get())  # Àrea frontal del coet [m^2]
+        self.m_i = float(var[5].get())  # Massa "molla" del coet (inclou propel·lent) [kg]
+        self.m_f = float(var[6].get())  # Massa "seca" del coet (no inclou propel·lent) [kg]
+        self.T_avg = float(var[7].get())  # Thrust mitjà del coet [N]
+        self.t_burn = float(var[8].get())  # Temps de cremat [s]
+        self.m = (self.m_i + self.m_f) / 2
+        self.k = 0.5 * self.c_D * self.A * self.rho_0
 
     def drag(self, h, v):
         if v == 0:  # Amb això ens estalviem dividir per 0.
