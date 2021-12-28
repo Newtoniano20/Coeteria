@@ -131,4 +131,4 @@ dmypy.json
 # Custom
 .build/
 *.spec
-.idea/workspace.xml
+.idea/*

@@ -17,7 +17,6 @@ root.geometry("1000x700")
 root.title("Taller Coeteria 2021")
 with open("background.png", "wb+") as tmp:
     tmp.write(base64.b64decode(bkg_img))
-    tmp.close()
 background_image = ImageTk.PhotoImage(Image.open("background.png"))
 background_label = Label(root, image=background_image)
 background_label.place(x=0, y=0)
