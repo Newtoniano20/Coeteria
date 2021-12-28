@@ -33,8 +33,11 @@ class Forces:
     def update_variables(self, var: list):
         """
         Updates all variables following
-        @param var: list of entries
-        @type var: list
+
+        :param var: list of entries
+        :type var: list
+        :return: None
+        :rtype:
         """
         self.g = float(var[0].get())  # acceleració de la gravetat [m/s^2]
         self.rho_0 = float(var[1].get())  # Densitat al nivell del mar [kg/m^3]
